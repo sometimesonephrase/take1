@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>내 책 추가하기</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            box-sizing: border-box; /* 추가: padding, border가 너비에 포함되도록 설정 */
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        input {
+            width: calc(100% - 20px); /* 수정: 좌우 10px 여백을 유지하도록 변경 */
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box; /* 추가: padding, border가 너비에 포함되도록 설정 */
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 4px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>내 책 추가하기</h2>
+    <form id="bookForm">
+        <label for="title">제목:</label>
+        <input type="text" id="title" name="title" required>
+
+        <label for="author">저자:</label>
+        <input type="text" id="author" name="author" required>
+
+        <label for="genre">장르:</label>
+        <input type="text" id="genre" name="genre">
+
+        <button type="button" onclick="addBook()">책 추가</button>
+    </form>
+
+    <h2>내가 읽은 책 목록</h2>
+    <ul id="bookList"></ul>
+
+    <script>
+        function addBook() {
+            var title = document.getElementById('title').value;
+            var author = document.getElementById('author').value;
+            var genre = document.getElementById('genre').value;
+
+            var bookList = document.getElementById('bookList');
+            var listItem = document.createElement('li');
+            listItem.textContent = title + ' by ' + author + ' - ' + genre;
+            bookList.appendChild(listItem);
+
+            console.log('책 추가: ' + title + ' by ' + author + ' - ' + genre);
+
+            document.getElementById('bookForm').reset();
+        }
+    </script>
+</body>
+</html>
